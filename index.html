@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conecta Imóveis Conceito | Imóveis e lançamentos em Fortaleza</title>
+<meta name="description" content="Encontre apartamentos na planta, lançamentos e imóveis prontos em Fortaleza e Região Metropolitana com a Conecta Imóveis Conceito.">
+<link rel="canonical" href="https://www.conectaimoveisconceito.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Conecta Imóveis Conceito | Imóveis e lançamentos em Fortaleza">
+<meta property="og:description" content="Encontre apartamentos na planta, lançamentos e imóveis prontos em Fortaleza e Região Metropolitana com a Conecta Imóveis Conceito.">
+<meta property="og:image" content="https://www.conectaimoveisconceito.com.br/images/geral/og-conecta.png">
+<meta property="og:url" content="https://www.conectaimoveisconceito.com.br/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="./images/logo/favicon.png">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<header class="header" data-header>
+  <div class="header__bar">
+    <a class="header__logo" href="./index.html">
+      <img src="./images/logo/conecta-icone.png" alt="Conecta Imóveis Conceito" onerror="this.style.display='none'">
+      Conecta <strong>Imóveis</strong><span class="brand-conceito" style="color:var(--teal-dark)">Conceito</span>
+    </a>
+    <nav class="nav" data-menu>
+      <a href="./imoveis/">Imóveis</a>
+      <a href="./lancamentos/">Lançamentos</a>
+      <a href="./regioes/">Regiões</a>
+      <a href="./sobre/">Sobre nós</a>
+      <a href="./blog/">Blog</a>
+      <a href="./contato/">Contato</a>
+      <a class="btn btn--whatsapp btn--sm" data-whatsapp-link="Olá! Vim pelo site da Conecta Imóveis Conceito e quero falar com um corretor." style="margin-top:12px">Falar no WhatsApp</a>
+    </nav>
+    <div class="header__actions">
+      <a class="tel-link" data-tel-link data-fill="telefoneExibicao">+55 (85) 99291-1212</a>
+      <a class="btn btn--whatsapp btn--sm" data-whatsapp-link="Olá! Vim pelo site da Conecta Imóveis Conceito e quero falar com um corretor.">WhatsApp</a>
+      <button class="menu-toggle" data-menu-toggle aria-label="Abrir menu" aria-expanded="false">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero__wrap">
+      <p class="hero__kicker">Conecta Imóveis Conceito</p>
+      <h1>Encontre o lançamento certo em Fortaleza e Região Metropolitana</h1>
+      <p class="lead">Assessoria completa, do primeiro contato às chaves na mão — com curadoria de apartamentos na planta, condomínios em obras e imóveis prontos para morar.</p>
+
+      <div class="hero__stats">
+        <div><strong id="stat-empreendimentos">--</strong><span>Empreendimentos ativos</span></div>
+        <div><strong>6</strong><span>Regiões atendidas</span></div>
+        <div><strong id="stat-construtoras">--</strong><span>Construtoras parceiras</span></div>
+      </div>
+
+      <form class="search-box" id="hero-search" action="imoveis/" method="get">
+        <div class="field">
+          <label for="hs-termo">O que você procura?</label>
+          <input id="hs-termo" name="q" type="text" placeholder="Bairro, cidade ou nome do empreendimento">
+        </div>
+        <div class="field">
+          <label for="hs-regiao">Localização</label>
+          <select id="hs-regiao" name="regiao"><option value="">Todas as regiões</option></select>
+        </div>
+        <div class="field">
+          <label for="hs-status">Status</label>
+          <select id="hs-status" name="status">
+            <option value="">Todos</option>
+            <option value="lancamento">Lançamento</option>
+            <option value="em-obras">Em obras</option>
+            <option value="pronto-para-morar">Pronto para morar</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="hs-tipo">Tipo</label>
+          <select id="hs-tipo" name="tipo"><option value="">Todos</option></select>
+        </div>
+        <button class="btn btn--primary" type="submit">Buscar</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="section__head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;max-width:none">
+        <div>
+          <p class="eyebrow">Selecionados pra você</p>
+          <h2>Lançamentos em destaque</h2>
+        </div>
+        <a class="btn btn--outline" href="lancamentos/">Ver todos os lançamentos →</a>
+      </div>
+      <div class="prop-grid" id="destaques-grid"></div>
+    </div>
+  </section>
+
+  <section class="section section--soft" data-reveal>
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Como funciona</p>
+        <h2>Do primeiro contato às chaves na mão</h2>
+      </div>
+      <div class="steps" id="steps-grid"></div>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="section__head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;max-width:none">
+        <div>
+          <p class="eyebrow">Onde estamos</p>
+          <h2>Regiões atendidas</h2>
+        </div>
+        <a class="btn btn--outline" href="regioes/">Ver todas as regiões →</a>
+      </div>
+      <div class="region-grid" id="regioes-grid"></div>
+    </div>
+  </section>
+
+  <section class="section section--tight" data-reveal>
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Parcerias</p>
+        <h2>Construtoras que confiam na Conecta</h2>
+      </div>
+      <div class="builders-track" id="construtoras-track"></div>
+    </div>
+  </section>
+
+  <section class="section section--soft" data-reveal>
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Quem já comprou</p>
+        <h2>Depoimentos de clientes</h2>
+      </div>
+      <div class="testi-grid" id="depoimentos-grid"></div>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap grid-2">
+      <div>
+        <p class="eyebrow">Dúvidas</p>
+        <h2>Perguntas frequentes</h2>
+      </div>
+      <div class="faq" id="faq-list"></div>
+    </div>
+  </section>
+
+  <section class="section section--tight" data-reveal>
+    <div class="wrap">
+      <div class="cta-banner">
+        <h2>Pronto para encontrar seu próximo imóvel?</h2>
+        <a class="btn btn--dark" data-whatsapp-link="Olá! Quero encontrar meu próximo imóvel com a Conecta.">Falar com um corretor</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // preencher selects da busca
+  var selRegiao = document.getElementById("hs-regiao");
+  Object.values(REGIOES).forEach(function (r) {
+    var o = document.createElement("option"); o.value = r.id; o.textContent = r.titulo; selRegiao.appendChild(o);
+  });
+  var tipos = Array.from(new Set(EMPREENDIMENTOS.map(function (e) { return e.tipo; })));
+  var selTipo = document.getElementById("hs-tipo");
+  tipos.forEach(function (t) { var o = document.createElement("option"); o.value = t; o.textContent = t; selTipo.appendChild(o); });
+  document.getElementById("hero-search").setAttribute("action", ROOT + "imoveis/");
+
+  // stats
+  document.getElementById("stat-empreendimentos").textContent = EMPREENDIMENTOS.length;
+  document.getElementById("stat-construtoras").textContent = CONSTRUTORAS.length;
+
+  // destaques: 1 por região (ou os que tiverem status lançamento/em obras primeiro)
+  var destaques = EMPREENDIMENTOS.filter(function (e) { return e.status !== "Pronto para morar"; }).slice(0, 6);
+  if (destaques.length < 6) destaques = EMPREENDIMENTOS.slice(0, 6);
+  document.getElementById("destaques-grid").innerHTML = destaques.map(empreendimentoCard).join("");
+
+  // como funciona
+  document.getElementById("steps-grid").innerHTML = COMO_FUNCIONA.map(function (s, i) {
+    return '<div class="step"><div class="step__num">0' + (i+1) + '</div><h3>' + s.titulo + '</h3><p>' + s.texto + '</p></div>';
+  }).join("");
+
+  // regiões
+  document.getElementById("regioes-grid").innerHTML = Object.values(REGIOES).map(function (r) {
+    return '<a class="region-card" href="regioes/#' + r.id + '">' + mediaBox(r.imagens && r.imagens[0], r.titulo, null) +
+      '<div class="region-card__body"><p class="region-card__tag">' + r.tag + '</p><h3>' + r.titulo + '</h3><p>' + r.distancia + '</p></div></a>';
+  }).join("");
+
+  // construtoras
+  document.getElementById("construtoras-track").innerHTML = CONSTRUTORAS.map(function (c) {
+    return '<div class="builder-logo">' + mediaBox(c.logo, "Logo da construtora", null) + '</div>';
+  }).join("");
+
+  // depoimentos
+  document.getElementById("depoimentos-grid").innerHTML = DEPOIMENTOS.map(function (d) {
+    return '<div class="testi-card">' +
+      (d.video ? '<div class="testi-card__video"><iframe src="' + d.video + '" title="Depoimento de ' + d.nome + '" allowfullscreen loading="lazy"></iframe></div>' : '') +
+      '<div class="testi-card__who"><div class="testi-card__avatar">' + d.iniciais + '</div><div><strong>' + d.nome + '</strong><span>' + d.papel + '</span></div></div>' +
+      '<p class="quote">“' + d.texto + '”</p></div>';
+  }).join("");
+
+  // faq
+  document.getElementById("faq-list").innerHTML = FAQ.map(function (f) {
+    return '<details class="faq-item"><summary>' + f.pergunta + '</summary><p>' + f.resposta + '</p></details>';
+  }).join("");
+});
+</script>
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div>
+      <a class="header__logo" href="./index.html" style="color:#fff">
+        <img src="./images/logo/conecta-icone.png" alt="" onerror="this.style.display='none'">
+        Conecta <strong style="color:var(--orange)">Imóveis</strong><span class="brand-conceito" style="color:#fff">Conceito</span>
+      </a>
+      <p style="margin-top:14px;font-size:0.9rem;max-width:280px">Especialista em conexão de sonhos. Assessoria completa para comprar, vender ou alugar imóveis em Fortaleza e Região Metropolitana.</p>
+    </div>
+    <div>
+      <h4>Navegue</h4>
+      <ul>
+        <li><a href="./imoveis/">Imóveis</a></li>
+        <li><a href="./lancamentos/">Lançamentos</a></li>
+        <li><a href="./regioes/">Regiões</a></li>
+        <li><a href="./blog/">Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Institucional</h4>
+      <ul>
+        <li><a href="./sobre/">Sobre nós</a></li>
+        <li><a href="./contato/">Contato</a></li>
+        <li><a href="./politica-de-privacidade/">Política de privacidade</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <ul>
+        <li><a data-whatsapp-link="">WhatsApp</a></li>
+        <li><a data-email-link data-fill="email">contato@conectaimoveisconceito.com.br</a></li>
+        <li><a data-instagram-link target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer__bottom">
+    <span>© <span data-fill="ano">2026</span> Conecta Imóveis Conceito — <span data-fill="creci">CRECI-CE 23158-J</span></span>
+    <span><a href="./politica-de-privacidade/">Política de privacidade</a></span>
+  </div>
+</footer>
+<a class="wa-float" data-whatsapp-link="Olá! Vim pelo site da Conecta Imóveis Conceito." aria-label="Falar no WhatsApp" target="_blank" rel="noopener">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.7.44 3.36 1.28 4.82L2 22l5.42-1.37a9.9 9.9 0 0 0 4.62 1.13h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.06c-.25.7-1.24 1.28-1.98 1.44-.53.11-1.22.2-3.55-.76-2.98-1.23-4.9-4.23-5.05-4.42-.15-.19-1.2-1.6-1.2-3.05 0-1.46.76-2.17 1.03-2.47.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.18.01.44-.07.68.53.25.6.85 2.06.92 2.21.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.06 1.14 1.01 2.1 1.33 2.4 1.48.3.15.48.13.65-.07.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.81 2.02.96.3.15.5.22.57.35.08.13.08.75-.17 1.45Z"/></svg>
+</a>
+<script src="./js/data.js"></script>
+<script src="./js/app.js"></script>
+
+</body>
+</html>

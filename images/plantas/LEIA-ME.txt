@@ -1,0 +1,1 @@
+Coloque aqui as imagens e/ou PDFs de plantas dos empreendimentos. Veja LEIA-ME.md na raiz do projeto para o formato esperado.
