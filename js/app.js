@@ -8,14 +8,18 @@
   "use strict";
 
   /* ---------- helpers de caminho relativo ---------- */
-  // Detecta a profundidade da página atual para gerar caminhos
-  // relativos corretos para header/menu/imagens em qualquer nível.
-  var DEPTH = (function () {
+  // O caminho correto (ex: "../../") é calculado no momento em que a
+  // página é gerada e injetado em <script>window.ROOT=...</script> no
+  // <head> — isso garante que funcione mesmo quando o site está
+  // publicado dentro de uma subpasta (ex: GitHub Pages em /Site-07/).
+  // Se por algum motivo essa tag não existir, calcula pela URL como
+  // reserva (só funciona corretamente se o site estiver na raiz do domínio).
+  var ROOT = window.ROOT || (function () {
     var path = window.location.pathname.replace(/\/index\.html$/, "/");
     var parts = path.split("/").filter(Boolean);
-    return parts.length;
+    var depth = parts.length;
+    return depth > 0 ? "../".repeat(depth) : "./";
   })();
-  var ROOT = DEPTH > 0 ? "../".repeat(DEPTH) : "./";
   window.ROOT = ROOT;
 
   function href(p) { return ROOT + p; }
@@ -33,8 +37,6 @@
   window.whatsappEmpreendimento = whatsappEmpreendimento;
 
   /* ---------- campo seguro (nunca inventa dado) ---------- */
-  // Retorna o valor se existir, ou marcador "A definir" com classe
-  // própria para estilização discreta (evita parecer erro).
   function campo(valor, sufixo) {
     if (valor === null || valor === undefined || valor === "" || valor === "A definir") {
       return '<span class="a-definir">A definir</span>';
@@ -49,10 +51,6 @@
   window.temDado = temDado;
 
   /* ---------- placeholder visual de imagem ---------- */
-  // Usado em todo o site enquanto as fotos reais não são enviadas.
-  // Assim que uma imagem existir em /images/..., basta trocar o
-  // <div class="ph-img"> pelo <img> correspondente — a estrutura
-  // (classe, proporção) já fica pronta.
   function phImg(label, ratio) {
     return '<div class="ph-img" style="' + (ratio ? "aspect-ratio:" + ratio + ";" : "") + '" role="img" aria-label="' + label + '">' +
       '<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5.5-5.5L9 17"/></svg>' +
@@ -61,10 +59,6 @@
   window.phImg = phImg;
 
   /* ---------- imagem real com fallback automático pro placeholder ---------- */
-  // Use esta função (não phImg diretamente) sempre que houver um campo de
-  // caminho de imagem vindo dos dados (data.js). Se o arquivo existir, ele
-  // aparece; se não existir (404), o placeholder aparece automaticamente —
-  // não precisa trocar nada no HTML quando as fotos reais forem enviadas.
   function escapeAttr(s) {
     return (s || "").toString().replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
   }
@@ -173,9 +167,25 @@
     els.forEach(function (e) { io.observe(e); });
   }
 
+  /* ---------- integração com CRM (PipeRun) ---------- */
+  // Envia o lead para o CRM via função serverless da Netlify.
+  // Nunca bloqueia nem atrasa a abertura do WhatsApp — se o CRM falhar
+  // por qualquer motivo, o cliente ainda consegue falar com a Conecta
+  // normalmente; o erro só fica registrado no console para depuração.
+  function enviarLeadCRM(nome, telefone, email, mensagem, contexto) {
+    fetch("/.netlify/functions/criar-lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nome: nome, telefone: telefone, email: email, mensagem: mensagem, contexto: contexto })
+    }).then(function (r) { return r.json().catch(function () { return {}; }); })
+      .then(function (data) {
+        if (!data.success) console.warn("CRM: não foi possível registrar o lead.", data);
+      })
+      .catch(function (err) { console.warn("CRM: falha de rede ao registrar lead.", err); });
+  }
+  window.enviarLeadCRM = enviarLeadCRM;
+
   /* ---------- formulário de lead genérico ---------- */
-  // Sem back-end configurado: por ora, envia o resumo pelo WhatsApp.
-  // Quando houver um endpoint real, troque o corpo desta função pelo fetch().
   function initLeadForms() {
     document.querySelectorAll("[data-lead-form]").forEach(function (form) {
       form.addEventListener("submit", function (ev) {
@@ -196,6 +206,7 @@
           ". Telefone: " + tel + (email ? " | E-mail: " + email : "") + (msg ? " | Mensagem: " + msg : "");
 
         showFormFeedback(form, "Obrigado! Vamos te chamar no WhatsApp agora.", false);
+        enviarLeadCRM(nome, tel, email, msg, contexto);
         window.open(whatsappLink(texto), "_blank", "noopener");
         form.reset();
       });
