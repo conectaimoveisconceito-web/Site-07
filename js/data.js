@@ -125,7 +125,7 @@ var EMPREENDIMENTOS = [
     suites: null,
     vagas: "1 Vaga carro",
     metragem: "40,94 m² (unidade padrão)",
-    preco: "R$ 230.000",
+    preco: "A partir de R$ 230.000",
     imagens: [
       "images/empreendimentos/eusebio-GVEIV-01.jpg",
       "images/empreendimentos/eusebio-GVEIV-02.jpg",
@@ -140,7 +140,7 @@ var EMPREENDIMENTOS = [
     diferenciais: ["Piscina adulto e infantil", "Academia ao ar livre", "Mesas de jogos", "Caramanchão", "Bicicletário", "Playground", "Salão aberto com churrasqueira", "Academia", "Espaço kids", "Pet place", "Quadra de beach tennis", "Coworking"],
     proximidades: ["5 min — Shopping Eusébio", "5 min — São Luiz Supermercado", "5 min — Chico do Caranguejo", "6 min — Colégio Farias Brito Júnior Eusébio", "10 min — Shopping Terrazo"],
     tipologia: { titulo: "Descrição da Unidade Padrão", area: "40,94 m²", ambientes: ["Quarto 01", "Quarto 02", "WC", "Sala", "Cozinha", "Área de serviço"] },
-    localizacao: "A definir"
+    localizacao: "Endereço: Rua Antônio Martins Freire, N° 50, Bairro Tamatanduba - Eusébio / CE - CEP 61768-450."
   },
 
   { id: "empreendimento-eusebio-02", nome: "Empreendimento Eusébio 02", construtora: "A definir", regiaoId: "eusebio", cidade: "Eusébio", bairro: "Centro", tipo: "Apartamento", status: "Pronto para morar", quartos: null, suites: null, vagas: null, metragem: "A definir", preco: "Consulte disponibilidade", imagens: ["images/empreendimentos/eusebio-02-01.jpg", "images/empreendimentos/eusebio-02-02.jpg", "images/empreendimentos/eusebio-02-03.jpg"], plantas: [], descricao: "Informações completas deste empreendimento em atualização — metragens, quartos, vagas, diferenciais e condições de pagamento serão publicados em breve.", diferenciais: [], localizacao: "A definir" },
