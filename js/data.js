@@ -133,7 +133,9 @@ var EMPREENDIMENTOS = [
       "images/empreendimentos/eusebio-GVEIV-04.jpg",
       "images/empreendimentos/eusebio-GVEIV-05.jpg"
     ],
-    plantas: [],
+    plantas: [{ nome: "Unidade padrão", area: "40,94 m²",
+    imagem: "images/plantas/gran-village-planta.jpg" }
+],
     descricao: "O Gran Village Eusébio IV está em uma região estratégica, valorizando seu imóvel e seu tempo.",
     diferenciais: ["Piscina adulto e infantil", "Academia ao ar livre", "Mesas de jogos", "Caramanchão", "Bicicletário", "Playground", "Salão aberto com churrasqueira", "Academia", "Espaço kids", "Pet place", "Quadra de beach tennis", "Coworking"],
     proximidades: ["5 min — Shopping Eusébio", "5 min — São Luiz Supermercado", "5 min — Chico do Caranguejo", "6 min — Colégio Farias Brito Júnior Eusébio", "10 min — Shopping Terrazo"],
