@@ -179,8 +179,11 @@
         var data = new FormData(form);
         var nome = (data.get("nome") || "").toString().trim();
         var tel = (data.get("telefone") || "").toString().trim();
+        var email = (data.get("email") || "").toString().trim();
+        var msg = (data.get("mensagem") || "").toString().trim();
         if (!nome || !tel) return;
         var texto = 'Olá! Meu nome é ' + nome + ', tenho interesse em ' + e.nome + '. Telefone: ' + tel;
+        enviarLeadCRM(nome, tel, email, msg, e.nome);
         window.open(whatsappLink(texto), "_blank", "noopener");
         form.reset();
       });
