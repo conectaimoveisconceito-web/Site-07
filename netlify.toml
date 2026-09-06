@@ -1,0 +1,23 @@
+# Configuração do Netlify — site estático + funções serverless.
+# Sem processo de build: os arquivos já estão prontos na raiz do repositório.
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# Cabeçalhos de cache: arquivos com nome fixo (css/js/imagens) podem ser
+# cacheados por mais tempo; o HTML é sempre revalidado.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
